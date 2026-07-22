@@ -1,0 +1,1845 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A clean, minimalist student revision dashboard with organised study materials, notes, and resources for every subject."
+    />
+    <title>StudyHub — Student Revision Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <span class="logo-text">StudyHub</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li class="nav-item active" data-page="dashboard">
+            <a href="#" class="nav-link" id="nav-dashboard" onclick="showPage('dashboard', this)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                <rect
+                  x="3"
+                  y="3"
+                  width="7"
+                  height="7"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="14"
+                  y="3"
+                  width="7"
+                  height="7"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="3"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="14"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item" data-page="materials">
+            <a href="#" class="nav-link" id="nav-materials" onclick="showPage('materials', this)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M9 7h7M9 11h5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <span>Study Materials</span>
+              <span class="nav-badge">24</span>
+            </a>
+          </li>
+          <li class="nav-item" data-page="subjects">
+            <a href="#" class="nav-link" id="nav-subjects" onclick="showPage('subjects', this)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6 12v5c3.33 2 8.67 2 12 0v-5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <span>Subjects</span>
+            </a>
+          </li>
+
+          <li class="nav-item" data-page="notes">
+            <a href="#" class="nav-link" id="nav-notes" onclick="showPage('notes', this)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>My Notes</span>
+            </a>
+          </li>
+          <li class="nav-item" data-page="schedule">
+            <a href="#" class="nav-link" id="nav-schedule" onclick="showPage('schedule', this)">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                <rect
+                  x="3"
+                  y="4"
+                  width="18"
+                  height="18"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M16 2v4M8 2v4M3 10h18"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <span>Schedule</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="theme-toggle">
+          <svg class="theme-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="theme-label">Dark Mode</span>
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-checkbox">
+            <span class="theme-slider round"></span>
+          </label>
+        </div>
+        <div class="user-profile">
+          <div class="avatar" id="user-avatar">A</div>
+          <div class="user-info">
+            <span class="user-name">Alex Johnson</span>
+            <span class="user-grade">Year 12 Student</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ MOBILE TOPBAR ============ -->
+    <header class="topbar">
+      <button
+        class="hamburger"
+        id="hamburger"
+        onclick="toggleSidebar()"
+        aria-label="Toggle navigation"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <div class="topbar-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        StudyHub
+      </div>
+      <div class="topbar-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.8" />
+          <path
+            d="M21 21l-4.35-4.35"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+    </header>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="main-content" id="main-content">
+      <!-- ======== PAGE: DASHBOARD ======== -->
+      <div class="page active" id="page-dashboard">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Good morning, Alex 👋</h1>
+            <p class="page-subtitle">You have 3 topics to review today. Keep it up!</p>
+          </div>
+          <div class="header-actions">
+            <div class="search-bar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.8" />
+                <path
+                  d="M21 21l-4.35-4.35"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search materials..."
+                oninput="filterMaterials()"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--blue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">24</span>
+              <span class="stat-label">Study Materials</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--purple">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6 12v5c3.33 2 8.67 2 12 0v-5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">6</span>
+              <span class="stat-label">Subjects</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--green">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <polyline
+                  points="22 12 18 12 15 21 9 3 6 12 2 12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">78%</span>
+              <span class="stat-label">Avg. Progress</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--amber">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                <polyline
+                  points="12 6 12 12 16 14"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">14h</span>
+              <span class="stat-label">Study Time</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two-column layout -->
+        <div class="dashboard-grid">
+          <!-- Recent Materials -->
+          <section class="dashboard-card">
+            <div class="card-header">
+              <h2 class="card-title">Recent Materials</h2>
+              <a
+                href="#"
+                class="card-link"
+                onclick="showPage('materials', document.getElementById('nav-materials'))"
+                >View all</a
+              >
+            </div>
+            <div class="material-list">
+              <div class="material-item">
+                <div class="material-thumb material-thumb--blue">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                    <polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="1.8" />
+                    <line
+                      x1="16"
+                      y1="13"
+                      x2="8"
+                      y2="13"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      x1="16"
+                      y1="17"
+                      x2="8"
+                      y2="17"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <div class="material-info">
+                  <span class="material-name">Calculus — Integration by Parts</span>
+                  <span class="material-meta">Mathematics · PDF · 2h ago</span>
+                </div>
+                <span class="material-tag tag--math">Maths</span>
+              </div>
+              <div class="material-item">
+                <div class="material-thumb material-thumb--green">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div class="material-info">
+                  <span class="material-name">Cell Division — Mitosis & Meiosis</span>
+                  <span class="material-meta">Biology · Notes · 5h ago</span>
+                </div>
+                <span class="material-tag tag--bio">Bio</span>
+              </div>
+              <div class="material-item">
+                <div class="material-thumb material-thumb--amber">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <polygon
+                      points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div class="material-info">
+                  <span class="material-name">Organic Chemistry — Alkenes</span>
+                  <span class="material-meta">Chemistry · PDF · 1d ago</span>
+                </div>
+                <span class="material-tag tag--chem">Chem</span>
+              </div>
+              <div class="material-item">
+                <div class="material-thumb material-thumb--purple">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                  </svg>
+                </div>
+                <div class="material-info">
+                  <span class="material-name">World War II — Causes & Effects</span>
+                  <span class="material-meta">History · Notes · 2d ago</span>
+                </div>
+                <span class="material-tag tag--hist">History</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Today's Schedule -->
+          <section class="dashboard-card">
+            <div class="card-header">
+              <h2 class="card-title">Today's Study Plan</h2>
+              <a
+                href="#"
+                class="card-link"
+                onclick="showPage('schedule', document.getElementById('nav-schedule'))"
+                >Edit</a
+              >
+            </div>
+            <div class="schedule-list">
+              <div class="schedule-item schedule-item--done">
+                <div class="schedule-time">
+                  <span>08:00</span>
+                  <span class="schedule-duration">1h</span>
+                </div>
+                <div class="schedule-dot schedule-dot--done"></div>
+                <div class="schedule-content">
+                  <span class="schedule-title">Mathematics Revision</span>
+                  <span class="schedule-sub">Integration by Parts, Ch. 6</span>
+                </div>
+                <div class="schedule-status done">Done</div>
+              </div>
+              <div class="schedule-item schedule-item--active">
+                <div class="schedule-time">
+                  <span>10:00</span>
+                  <span class="schedule-duration">1.5h</span>
+                </div>
+                <div class="schedule-dot schedule-dot--active"></div>
+                <div class="schedule-content">
+                  <span class="schedule-title">Biology — Cell Division</span>
+                  <span class="schedule-sub">Mitosis & Meiosis notes</span>
+                </div>
+                <div class="schedule-status active">Now</div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">
+                  <span>13:00</span>
+                  <span class="schedule-duration">1h</span>
+                </div>
+                <div class="schedule-dot"></div>
+                <div class="schedule-content">
+                  <span class="schedule-title">Chemistry Revision</span>
+                  <span class="schedule-sub">Organic Chemistry deck</span>
+                </div>
+                <div class="schedule-status upcoming">Soon</div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">
+                  <span>15:00</span>
+                  <span class="schedule-duration">2h</span>
+                </div>
+                <div class="schedule-dot"></div>
+                <div class="schedule-content">
+                  <span class="schedule-title">History Essay Practice</span>
+                  <span class="schedule-sub">WW2 causes — timed essay</span>
+                </div>
+                <div class="schedule-status upcoming">Soon</div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Subject Progress -->
+        <section class="dashboard-card full-width">
+          <div class="card-header">
+            <h2 class="card-title">Subject Progress</h2>
+            <span class="card-subtitle">This week</span>
+          </div>
+          <div class="progress-grid">
+            <div class="progress-item">
+              <div class="progress-header">
+                <span class="progress-subject">Mathematics</span>
+                <span class="progress-pct">85%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill progress-fill--blue" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-header">
+                <span class="progress-subject">Biology</span>
+                <span class="progress-pct">72%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill progress-fill--green" style="width: 72%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-header">
+                <span class="progress-subject">Chemistry</span>
+                <span class="progress-pct">60%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill progress-fill--amber" style="width: 60%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-header">
+                <span class="progress-subject">History</span>
+                <span class="progress-pct">90%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill progress-fill--purple" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-header">
+                <span class="progress-subject">Physics</span>
+                <span class="progress-pct">55%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill progress-fill--rose" style="width: 55%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-header">
+                <span class="progress-subject">English Literature</span>
+                <span class="progress-pct">80%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill progress-fill--teal" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ======== PAGE: STUDY MATERIALS ======== -->
+      <div class="page" id="page-materials">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Study Materials</h1>
+            <p class="page-subtitle">Browse and access all available resources</p>
+          </div>
+          <div class="header-actions">
+            <div class="search-bar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.8" />
+                <path
+                  d="M21 21l-4.35-4.35"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <input
+                type="text"
+                id="material-search"
+                placeholder="Search materials..."
+                oninput="filterMaterialCards()"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+          <button class="filter-tab active" onclick="filterBySubject('all', this)" id="filter-all">
+            All
+          </button>
+          <button class="filter-tab" onclick="filterBySubject('math', this)" id="filter-math">
+            Mathematics
+          </button>
+          <button class="filter-tab" onclick="filterBySubject('biology', this)" id="filter-biology">
+            Biology
+          </button>
+          <button
+            class="filter-tab"
+            onclick="filterBySubject('chemistry', this)"
+            id="filter-chemistry"
+          >
+            Chemistry
+          </button>
+          <button class="filter-tab" onclick="filterBySubject('history', this)" id="filter-history">
+            History
+          </button>
+          <button class="filter-tab" onclick="filterBySubject('physics', this)" id="filter-physics">
+            Physics
+          </button>
+          <button class="filter-tab" onclick="filterBySubject('english', this)" id="filter-english">
+            English
+          </button>
+        </div>
+
+        <!-- Materials Grid -->
+        <div class="materials-grid" id="materials-grid">
+          <!-- Math -->
+          <div class="material-card" data-subject="math" data-title="Calculus Integration by Parts">
+            <div class="material-card-top material-card-top--blue">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="1.8" />
+                </svg>
+              </div>
+              <span class="material-card-type">PDF</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">Mathematics</span>
+              <h3 class="material-card-title">Calculus — Integration by Parts</h3>
+              <p class="material-card-desc">
+                Comprehensive guide on integration by parts with worked examples and practice
+                problems.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">18 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Calculus — Integration by Parts',
+                      'Mathematics',
+                      'PDF',
+                      '18 pages',
+                      'A comprehensive guide covering the integration by parts technique, including the formula derivation, worked examples ranging from simple to complex, and a set of practice problems with full solutions. Topics include repeated integration by parts, tabular method, and real-world applications.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-subject="math" data-title="Trigonometry Identities">
+            <div class="material-card-top material-card-top--blue">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">Notes</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">Mathematics</span>
+              <h3 class="material-card-title">Trigonometry Identities</h3>
+              <p class="material-card-desc">
+                All major trig identities: Pythagorean, compound angle, double angle, and more.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">8 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Trigonometry Identities',
+                      'Mathematics',
+                      'Notes',
+                      '8 pages',
+                      'Complete reference sheet covering all essential trigonometric identities. Includes Pythagorean identities, reciprocal identities, compound angle formulas, double and half-angle formulas, product-to-sum and sum-to-product identities. Each identity is accompanied by a brief proof and at least one application example.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-subject="math" data-title="Statistics and Probability">
+            <div class="material-card-top material-card-top--blue">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <line
+                    x1="18"
+                    y1="20"
+                    x2="18"
+                    y2="10"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="12"
+                    y1="20"
+                    x2="12"
+                    y2="4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="6"
+                    y1="20"
+                    x2="6"
+                    y2="14"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">PDF</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">Mathematics</span>
+              <h3 class="material-card-title">Statistics & Probability</h3>
+              <p class="material-card-desc">
+                Normal distribution, hypothesis testing, and probability distributions explained
+                clearly.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">22 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Statistics & Probability',
+                      'Mathematics',
+                      'PDF',
+                      '22 pages',
+                      'Detailed notes on statistical concepts including descriptive statistics, normal distribution and Z-scores, confidence intervals, hypothesis testing (t-test, chi-square), correlation and regression, and probability rules including conditional probability and Bayes theorem. Includes past exam questions with worked solutions.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Biology -->
+          <div
+            class="material-card"
+            data-subject="biology"
+            data-title="Cell Division Mitosis Meiosis"
+          >
+            <div class="material-card-top material-card-top--green">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8" />
+                  <path
+                    d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">Notes</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">Biology</span>
+              <h3 class="material-card-title">Cell Division — Mitosis & Meiosis</h3>
+              <p class="material-card-desc">
+                Detailed breakdown of cell division stages with diagrams and comparison tables.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">12 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Cell Division — Mitosis & Meiosis',
+                      'Biology',
+                      'Notes',
+                      '12 pages',
+                      'Comprehensive notes on cell division covering: the cell cycle (interphase, mitosis, cytokinesis), detailed stages of mitosis (prophase, metaphase, anaphase, telophase), stages of meiosis I and II, comparison between mitosis and meiosis, significance of each process, and common exam questions. Includes labelled diagrams for each phase.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-subject="biology" data-title="Genetics DNA RNA">
+            <div class="material-card-top material-card-top--green">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M2 2c0 0 4 2 4 7s-4 7-4 7"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M22 2c0 0-4 2-4 7s4 7 4 7"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M2 9h20M2 5h4M18 5h4M2 13h4M18 13h4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">PDF</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">Biology</span>
+              <h3 class="material-card-title">Genetics — DNA, RNA & Protein Synthesis</h3>
+              <p class="material-card-desc">
+                From DNA structure to transcription and translation with detailed diagrams.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">20 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Genetics — DNA, RNA & Protein Synthesis',
+                      'Biology',
+                      'PDF',
+                      '20 pages',
+                      'Full coverage of molecular genetics: DNA double helix structure, base pairing rules, DNA replication (semi-conservative model), transcription (mRNA synthesis), RNA processing, translation at ribosomes, the genetic code and codon table, mutations and their effects, gene expression regulation, and an introduction to genetic engineering and PCR.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chemistry -->
+          <div
+            class="material-card"
+            data-subject="chemistry"
+            data-title="Organic Chemistry Alkenes Reactions"
+          >
+            <div class="material-card-top material-card-top--amber">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <polygon
+                    points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">PDF</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">Chemistry</span>
+              <h3 class="material-card-title">Organic Chemistry — Alkenes</h3>
+              <p class="material-card-desc">
+                Structure, reactions, and mechanisms of alkenes including addition reactions.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">16 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Organic Chemistry — Alkenes',
+                      'Chemistry',
+                      'PDF',
+                      '16 pages',
+                      'Detailed study guide on alkenes covering: naming and structure, geometric isomerism (cis/trans), electrophilic addition reactions (HX, X2, H2O, H2), Markovnikov\'s rule, reaction mechanisms with curly arrows, polymerisation, tests for alkenes (bromine water), and comparisons with alkanes and alkynes. Includes past paper questions.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-subject="chemistry" data-title="Periodic Table Trends">
+            <div class="material-card-top material-card-top--amber">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M3 9h18M3 15h18M9 3v18M15 3v18"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">Notes</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">Chemistry</span>
+              <h3 class="material-card-title">Periodic Table Trends</h3>
+              <p class="material-card-desc">
+                Atomic radius, ionisation energy, electronegativity trends explained with graphs.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">10 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Periodic Table Trends',
+                      'Chemistry',
+                      'Notes',
+                      '10 pages',
+                      'Systematic review of periodic trends across periods and down groups: atomic radius, ionic radius, ionisation energy (1st, 2nd, successive), electron affinity, electronegativity, metallic character, and reactivity trends. Each trend is explained with the underlying theory (nuclear charge, shielding, electron configuration) and illustrated with data tables and graphs.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- History -->
+          <div
+            class="material-card"
+            data-subject="history"
+            data-title="World War II Causes Effects"
+          >
+            <div class="material-card-top material-card-top--purple">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" />
+                  <path
+                    d="M12 8v4l3 3"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">Notes</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">History</span>
+              <h3 class="material-card-title">World War II — Causes & Effects</h3>
+              <p class="material-card-desc">
+                In-depth analysis of the political, economic, and social causes of WWII.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">25 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'World War II — Causes & Effects',
+                      'History',
+                      'Notes',
+                      '25 pages',
+                      'Comprehensive essay-style notes on the causes and consequences of World War II. Covers: the legacy of WWI and the Treaty of Versailles, the Great Depression, rise of fascism in Germany and Italy, appeasement policy, key events leading to war (Anschluss, Munich Agreement, invasion of Poland), key turning points of the war, the Holocaust, atomic bombings of Japan, post-war consequences, formation of the UN, and the beginning of the Cold War.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Physics -->
+          <div
+            class="material-card"
+            data-subject="physics"
+            data-title="Mechanics Newtons Laws Motion"
+          >
+            <div class="material-card-top material-card-top--rose">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M5 12h14M12 5l7 7-7 7"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">PDF</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">Physics</span>
+              <h3 class="material-card-title">Mechanics — Newton's Laws of Motion</h3>
+              <p class="material-card-desc">
+                All three laws with worked examples, free-body diagrams, and problem sets.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">14 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Mechanics — Newton\'s Laws of Motion',
+                      'Physics',
+                      'PDF',
+                      '14 pages',
+                      'Full revision guide on Newton\'s Laws: First law (inertia), Second law (F=ma and its applications), Third law (action-reaction pairs). Includes free body diagram construction, equilibrium conditions, inclined planes, friction (static and kinetic), connected objects (Atwood machine), and circular motion introduction. Each section has worked examples and practice questions with answers.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="material-card" data-subject="physics" data-title="Waves and Optics">
+            <div class="material-card-top material-card-top--rose">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <polyline
+                    points="22 12 18 12 15 21 9 3 6 12 2 12"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">Notes</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">Physics</span>
+              <h3 class="material-card-title">Waves & Optics</h3>
+              <p class="material-card-desc">
+                Wave properties, interference, diffraction, refraction, and the electromagnetic
+                spectrum.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">18 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Waves & Optics',
+                      'Physics',
+                      'Notes',
+                      '18 pages',
+                      'Comprehensive notes on wave physics: wave characteristics (amplitude, frequency, wavelength, speed), transverse vs longitudinal waves, electromagnetic spectrum, reflection and refraction (Snell\'s law), total internal reflection and optical fibres, diffraction, superposition and interference, Young\'s double slit experiment, standing waves, and resonance. Includes ray diagrams and wave diagrams.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- English -->
+          <div
+            class="material-card"
+            data-subject="english"
+            data-title="Macbeth Analysis Shakespeare"
+          >
+            <div class="material-card-top material-card-top--teal">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                  <path
+                    d="M9 7h7M9 11h5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">Notes</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">English Literature</span>
+              <h3 class="material-card-title">Macbeth — Character & Theme Analysis</h3>
+              <p class="material-card-desc">
+                In-depth analysis of key characters, themes, and quotations from Macbeth.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">30 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Macbeth — Character & Theme Analysis',
+                      'English Literature',
+                      'Notes',
+                      '30 pages',
+                      'Exhaustive literary analysis of Shakespeare\'s Macbeth. Covers: character profiles (Macbeth, Lady Macbeth, Banquo, Macduff, the Witches), major themes (ambition, guilt, fate vs free will, appearance vs reality, gender and power), key quotation analysis with context and effect, act-by-act plot summary, Shakespeare\'s use of language and dramatic devices, and model essay paragraphs for common exam questions.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="material-card"
+            data-subject="english"
+            data-title="Essay Writing Skills Structure"
+          >
+            <div class="material-card-top material-card-top--teal">
+              <div class="material-card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="material-card-type">Guide</span>
+            </div>
+            <div class="material-card-body">
+              <span class="material-card-subject">English Literature</span>
+              <h3 class="material-card-title">Essay Writing — Structure & Skills</h3>
+              <p class="material-card-desc">
+                A complete guide to crafting high-scoring essays with PEEL, introductions, and
+                conclusions.
+              </p>
+              <div class="material-card-footer">
+                <span class="material-card-pages">15 pages</span>
+                <button
+                  class="btn-view"
+                  onclick="
+                    openModal(
+                      'Essay Writing — Structure & Skills',
+                      'English Literature',
+                      'Guide',
+                      '15 pages',
+                      'A practical guide to academic essay writing: planning and brainstorming, constructing a strong thesis statement, PEEL paragraph structure (Point, Evidence, Explain, Link), embedding and analysing quotations, writing effective introductions and conclusions, cohesive linking language, how to approach different question types, common mistakes to avoid, and a checklist for essay self-assessment. Includes annotated model essays.'
+                    )
+                  "
+                >
+                  View
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12h14M12 5l7 7-7 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== PAGE: SUBJECTS ======== -->
+      <div class="page" id="page-subjects">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Subjects</h1>
+            <p class="page-subtitle">All subjects and their available resources</p>
+          </div>
+        </div>
+        <div class="subjects-grid">
+          <div
+            class="subject-card"
+            onclick="
+              showPage('materials', document.getElementById('nav-materials'));
+              setTimeout(() => filterBySubject('math', document.getElementById('filter-math')), 50);
+            "
+          >
+            <div class="subject-card-accent subject-card-accent--blue"></div>
+            <div class="subject-icon subject-icon--blue">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+              </svg>
+            </div>
+            <h3 class="subject-name">Mathematics</h3>
+            <p class="subject-desc">Calculus, algebra, statistics, and more</p>
+            <div class="subject-meta">
+              <span class="subject-count">3 materials</span>
+              <span class="subject-arrow">→</span>
+            </div>
+          </div>
+
+          <div
+            class="subject-card"
+            onclick="
+              showPage('materials', document.getElementById('nav-materials'));
+              setTimeout(
+                () => filterBySubject('biology', document.getElementById('filter-biology')),
+                50
+              );
+            "
+          >
+            <div class="subject-card-accent subject-card-accent--green"></div>
+            <div class="subject-icon subject-icon--green">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M12 8v8M8 12h8"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3 class="subject-name">Biology</h3>
+            <p class="subject-desc">Cell biology, genetics, ecology, and more</p>
+            <div class="subject-meta">
+              <span class="subject-count">2 materials</span>
+              <span class="subject-arrow">→</span>
+            </div>
+          </div>
+
+          <div
+            class="subject-card"
+            onclick="
+              showPage('materials', document.getElementById('nav-materials'));
+              setTimeout(
+                () => filterBySubject('chemistry', document.getElementById('filter-chemistry')),
+                50
+              );
+            "
+          >
+            <div class="subject-card-accent subject-card-accent--amber"></div>
+            <div class="subject-icon subject-icon--amber">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M9 2v7L4.5 17A2 2 0 0 0 6.32 20h11.36a2 2 0 0 0 1.82-3L15 9V2"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path d="M9 2h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="subject-name">Chemistry</h3>
+            <p class="subject-desc">Organic chemistry, periodic trends, and more</p>
+            <div class="subject-meta">
+              <span class="subject-count">2 materials</span>
+              <span class="subject-arrow">→</span>
+            </div>
+          </div>
+
+          <div
+            class="subject-card"
+            onclick="
+              showPage('materials', document.getElementById('nav-materials'));
+              setTimeout(
+                () => filterBySubject('history', document.getElementById('filter-history')),
+                50
+              );
+            "
+          >
+            <div class="subject-card-accent subject-card-accent--purple"></div>
+            <div class="subject-icon subject-icon--purple">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" />
+                <path
+                  d="M12 6v6l4 2"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3 class="subject-name">History</h3>
+            <p class="subject-desc">World wars, revolutions, and modern history</p>
+            <div class="subject-meta">
+              <span class="subject-count">1 material</span>
+              <span class="subject-arrow">→</span>
+            </div>
+          </div>
+
+          <div
+            class="subject-card"
+            onclick="
+              showPage('materials', document.getElementById('nav-materials'));
+              setTimeout(
+                () => filterBySubject('physics', document.getElementById('filter-physics')),
+                50
+              );
+            "
+          >
+            <div class="subject-card-accent subject-card-accent--rose"></div>
+            <div class="subject-icon subject-icon--rose">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <polyline
+                  points="22 12 18 12 15 21 9 3 6 12 2 12"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="subject-name">Physics</h3>
+            <p class="subject-desc">Mechanics, waves, electricity, and more</p>
+            <div class="subject-meta">
+              <span class="subject-count">2 materials</span>
+              <span class="subject-arrow">→</span>
+            </div>
+          </div>
+
+          <div
+            class="subject-card"
+            onclick="
+              showPage('materials', document.getElementById('nav-materials'));
+              setTimeout(
+                () => filterBySubject('english', document.getElementById('filter-english')),
+                50
+              );
+            "
+          >
+            <div class="subject-card-accent subject-card-accent--teal"></div>
+            <div class="subject-icon subject-icon--teal">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+              </svg>
+            </div>
+            <h3 class="subject-name">English Literature</h3>
+            <p class="subject-desc">Texts, essay writing, language analysis</p>
+            <div class="subject-meta">
+              <span class="subject-count">2 materials</span>
+              <span class="subject-arrow">→</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ======== PAGE: NOTES ======== -->
+      <div class="page" id="page-notes">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">My Notes</h1>
+            <p class="page-subtitle">Personal revision notes and summaries</p>
+          </div>
+          <button class="btn-primary" onclick="createNewNote()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 5v14M5 12h14"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            New Note
+          </button>
+        </div>
+        <div class="notes-grid" id="notes-grid">
+          <div class="note-card">
+            <div class="note-card-header">
+              <span class="note-tag note-tag--blue">Mathematics</span>
+              <span class="note-date">Jul 5, 2026</span>
+            </div>
+            <h3 class="note-title">Integration Tips</h3>
+            <p class="note-preview">
+              Key things to remember: always check if substitution works first before integration by
+              parts. For ∫ln(x)dx, let u = ln(x)...
+            </p>
+            <div class="note-footer">
+              <button class="note-btn" onclick="editNote(this)">Edit</button>
+              <button class="note-btn note-btn--danger" onclick="deleteNote(this)">Delete</button>
+            </div>
+          </div>
+          <div class="note-card">
+            <div class="note-card-header">
+              <span class="note-tag note-tag--green">Biology</span>
+              <span class="note-date">Jul 4, 2026</span>
+            </div>
+            <h3 class="note-title">Mitosis Stages Mnemonic</h3>
+            <p class="note-preview">
+              PMAT: Prophase, Metaphase, Anaphase, Telophase. Remember: "People Meet And Talk".
+              Interphase comes before but isn't technically part of mitosis...
+            </p>
+            <div class="note-footer">
+              <button class="note-btn" onclick="editNote(this)">Edit</button>
+              <button class="note-btn note-btn--danger" onclick="deleteNote(this)">Delete</button>
+            </div>
+          </div>
+          <div class="note-card">
+            <div class="note-card-header">
+              <span class="note-tag note-tag--amber">Chemistry</span>
+              <span class="note-date">Jul 3, 2026</span>
+            </div>
+            <h3 class="note-title">Markovnikov's Rule</h3>
+            <p class="note-preview">
+              "The rich get richer" — the carbon with MORE hydrogens gets the new hydrogen added.
+              For HBr addition to propene: Br goes to C2, not C1...
+            </p>
+            <div class="note-footer">
+              <button class="note-btn" onclick="editNote(this)">Edit</button>
+              <button class="note-btn note-btn--danger" onclick="deleteNote(this)">Delete</button>
+            </div>
+          </div>
+          <div class="note-card">
+            <div class="note-card-header">
+              <span class="note-tag note-tag--purple">History</span>
+              <span class="note-date">Jul 2, 2026</span>
+            </div>
+            <h3 class="note-title">MAIN Causes of WWI</h3>
+            <p class="note-preview">
+              Militarism, Alliance system, Imperialism, Nationalism. The assassination of Franz
+              Ferdinand was the spark, but these were the long-term causes...
+            </p>
+            <div class="note-footer">
+              <button class="note-btn" onclick="editNote(this)">Edit</button>
+              <button class="note-btn note-btn--danger" onclick="deleteNote(this)">Delete</button>
+            </div>
+          </div>
+        </div>
+        <!-- New Note Form (hidden by default) -->
+        <div class="note-form-overlay" id="note-form-overlay" onclick="closeNoteForm(event)">
+          <div class="note-form" id="note-form">
+            <h3 class="note-form-title">New Note</h3>
+            <select class="note-form-select" id="note-subject">
+              <option value="blue">Mathematics</option>
+              <option value="green">Biology</option>
+              <option value="amber">Chemistry</option>
+              <option value="purple">History</option>
+              <option value="rose">Physics</option>
+              <option value="teal">English Literature</option>
+            </select>
+            <input
+              type="text"
+              class="note-form-input"
+              id="note-title-input"
+              placeholder="Note title..."
+            />
+            <textarea
+              class="note-form-textarea"
+              id="note-content-input"
+              placeholder="Start writing your note..."
+            ></textarea>
+            <div class="note-form-actions">
+              <button class="btn-secondary" onclick="closeNoteForm()">Cancel</button>
+              <button class="btn-primary" onclick="saveNote()">Save Note</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== PAGE: SCHEDULE ======== -->
+      <div class="page" id="page-schedule">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Study Schedule</h1>
+            <p class="page-subtitle">Plan and track your daily revision sessions</p>
+          </div>
+        </div>
+        <div class="schedule-page-grid">
+          <section class="dashboard-card">
+            <div class="card-header">
+              <h2 class="card-title">This Week</h2>
+              <span class="card-subtitle">Jul 1 – Jul 7, 2026</span>
+            </div>
+            <div class="week-grid">
+              <div class="week-day week-day--past">
+                <span class="day-name">Mon</span>
+                <span class="day-num">1</span>
+                <div class="day-sessions">
+                  <div class="day-dot day-dot--done" title="Maths"></div>
+                  <div class="day-dot day-dot--done" title="Biology"></div>
+                </div>
+              </div>
+              <div class="week-day week-day--past">
+                <span class="day-name">Tue</span>
+                <span class="day-num">2</span>
+                <div class="day-sessions">
+                  <div class="day-dot day-dot--done" title="History"></div>
+                </div>
+              </div>
+              <div class="week-day week-day--past">
+                <span class="day-name">Wed</span>
+                <span class="day-num">3</span>
+                <div class="day-sessions">
+                  <div class="day-dot day-dot--done" title="Chemistry"></div>
+                  <div class="day-dot day-dot--done" title="English"></div>
+                  <div class="day-dot day-dot--done" title="Physics"></div>
+                </div>
+              </div>
+              <div class="week-day week-day--past">
+                <span class="day-name">Thu</span>
+                <span class="day-num">4</span>
+                <div class="day-sessions">
+                  <div class="day-dot day-dot--done" title="Maths"></div>
+                  <div class="day-dot day-dot--done" title="Biology"></div>
+                </div>
+              </div>
+              <div class="week-day week-day--past">
+                <span class="day-name">Fri</span>
+                <span class="day-num">5</span>
+                <div class="day-sessions">
+                  <div class="day-dot day-dot--done" title="History"></div>
+                  <div class="day-dot day-dot--done" title="Maths"></div>
+                </div>
+              </div>
+              <div class="week-day week-day--today">
+                <span class="day-name">Sat</span>
+                <span class="day-num">6</span>
+                <div class="day-sessions">
+                  <div class="day-dot day-dot--done" title="Maths"></div>
+                  <div class="day-dot day-dot--active" title="Biology"></div>
+                  <div class="day-dot" title="Chemistry"></div>
+                  <div class="day-dot" title="History"></div>
+                </div>
+              </div>
+              <div class="week-day">
+                <span class="day-name">Sun</span>
+                <span class="day-num">7</span>
+                <div class="day-sessions">
+                  <div class="day-dot" title="Rest"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="dashboard-card">
+            <div class="card-header">
+              <h2 class="card-title">Today — Saturday, 6 July</h2>
+            </div>
+            <div class="schedule-list">
+              <div class="schedule-item schedule-item--done">
+                <div class="schedule-time">
+                  <span>08:00</span><span class="schedule-duration">1h</span>
+                </div>
+                <div class="schedule-dot schedule-dot--done"></div>
+                <div class="schedule-content">
+                  <span class="schedule-title">Mathematics Revision</span>
+                  <span class="schedule-sub">Integration by Parts, Ch. 6</span>
+                </div>
+                <div class="schedule-status done">Done</div>
+              </div>
+              <div class="schedule-item schedule-item--active">
+                <div class="schedule-time">
+                  <span>10:00</span><span class="schedule-duration">1.5h</span>
+                </div>
+                <div class="schedule-dot schedule-dot--active"></div>
+                <div class="schedule-content">
+                  <span class="schedule-title">Biology — Cell Division</span>
+                  <span class="schedule-sub">Mitosis & Meiosis notes</span>
+                </div>
+                <div class="schedule-status active">Now</div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">
+                  <span>13:00</span><span class="schedule-duration">1h</span>
+                </div>
+                <div class="schedule-dot"></div>
+                <div class="schedule-content">
+                  <span class="schedule-title">Chemistry Revision</span>
+                  <span class="schedule-sub">Organic Chemistry deck</span>
+                </div>
+                <div class="schedule-status upcoming">Soon</div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">
+                  <span>15:00</span><span class="schedule-duration">2h</span>
+                </div>
+                <div class="schedule-dot"></div>
+                <div class="schedule-content">
+                  <span class="schedule-title">History Essay Practice</span>
+                  <span class="schedule-sub">WW2 causes — timed essay</span>
+                </div>
+                <div class="schedule-status upcoming">Soon</div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- ============ MATERIAL MODAL ============ -->
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <div>
+            <span class="modal-subject" id="modal-subject">Mathematics</span>
+            <h2 class="modal-title" id="modal-title">Material Title</h2>
+          </div>
+          <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-meta">
+          <span class="modal-meta-item" id="modal-type">PDF</span>
+          <span class="modal-meta-item" id="modal-pages">18 pages</span>
+        </div>
+        <div class="modal-body" id="modal-body">
+          <p>Loading material details...</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" onclick="closeModal()">Close</button>
+          <button class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <polyline
+                points="7 10 12 15 17 10"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="12"
+                y1="15"
+                x2="12"
+                y2="3"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            Download
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
